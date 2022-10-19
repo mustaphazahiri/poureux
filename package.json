@@ -1,0 +1,17 @@
+{
+  "name": "mvc",
+  "version": "1.0.0",
+  "description": "Site realisé en cours de formation developpeur web et web mobile. Ce site a ete commandé par le collectif \"Pour Eux Nancy\".",
+  "main": "index.php",
+  "scripts": {
+    "sass": "sass --watch public/SASS/main.scss public/CSS/main.css"
+  },
+  "author": "Mustapha Zahiri",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.54.5"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.9.1"
+  }
+}
