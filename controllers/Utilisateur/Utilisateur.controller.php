@@ -46,6 +46,34 @@ class UtilisateurController extends MainController
         ];
         $this->genererPage($data_page);
     }
+     public function cuisinier()
+        {
+            $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+            $_SESSION['profil']["role"] = $datas['role'];
+            $data_page = [
+                "page_description" => "Description de la page espace Cuisinier",
+                "page_title" => "l'espace Cuisinier",
+                "utilisateur" => $datas,
+                "page_javascript" => ['profil.js'],
+                "view" => "views/utilisateur/profil.view.php",
+                "template" => "views/common/template2.php"
+            ];
+            $this->genererPage($data_page);
+        }
+        public function livreur()
+                {
+                    $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+                    $_SESSION['profil']["role"] = $datas['role'];
+                    $data_page = [
+                        "page_description" => "Description de la page espace Cuisinier",
+                        "page_title" => "l'espace Cuisinier",
+                        "utilisateur" => $datas,
+                        "page_javascript" => ['profil.js'],
+                        "view" => "views/utilisateur/profil.view.php",
+                        "template" => "views/common/template2.php"
+                    ];
+                    $this->genererPage($data_page);
+                }
 
     public function deconnexion()
     {

@@ -117,12 +117,12 @@ try {
                 header('Location: ' . URL . "connexion");
             } else {
                 switch ($url[1]) {
-                        // case "cuisinier":
-                        //     $utilisateurController->cuisinier();
-                        //     break;
-                        // case "livreur":
-                        //     $utilisateurController->livreur();
-                        //     break;
+                        case "paniersrepas":
+                             $utilisateurController->cuisinier();
+                             break;
+                         case "livraisons":
+                             $utilisateurController->livreur();
+                             break;
                     case "profil":
                         $utilisateurController->profil();
                         break;

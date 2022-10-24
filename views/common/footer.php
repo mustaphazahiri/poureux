@@ -6,13 +6,13 @@
                 <div class="hrFooter my-4 mx-5">
                     <!-- la div orange en haut à gache du footer -->
                 </div>
-                <a class="text-decoration-none text-dark" href="contact">
+                <a class="text-decoration-none text-dark" href="<?= URL; ?>contact">
                     <h5 class="my-4 mx-5">Contact</h5>
                 </a>
-                <a class="text-decoration-none text-dark" href="connexion">
+                <a class="text-decoration-none text-dark" href="<?= URL; ?>connexion">
                     <h5 class="my-4 mx-5">Deveir bénévole</h5>
                 </a>
-                <a class="text-decoration-none text-dark" href="contact">
+                <a class="text-decoration-none text-dark" href="<?= URL; ?>contact">
                     <h5 class="my-4 mx-5">Notre charte</h5>
                 </a>
 

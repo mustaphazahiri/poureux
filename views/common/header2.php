@@ -20,10 +20,10 @@
                     </li>
                     <?php if (!empty($_SESSION['profil'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>paniersrepas">Paniers repas</a>
+                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>compte/paniersrepas">Paniers repas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>livraisons">Livraisons</a>
+                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>compte/livraisons">Livraisons</a>
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
