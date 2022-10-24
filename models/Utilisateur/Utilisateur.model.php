@@ -61,9 +61,52 @@ class UtilisateurManager extends MainManager
         $stmt->closeCursor();
         return $isModified;
     }
+
     public function isLoginAvailable($login)
     {
         $utilisateur = $this->getUserInformation($login);
         return empty($utilisateur);
     }
+    public function bdValidationMailCompte($login, $clef)
+    {
+        $req = "UPDATE user set is_valid =1 where email= :login and clef= :clef";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(":clef", $clef, PDO::PARAM_INT);
+        $stmt->execute();
+        $isModified = ($stmt->rowcount() > 0);
+        $stmt->closeCursor();
+        return $isModified;
+    }
+    public function bdModificationMailUser($login, $mail)
+    {
+        $req = "UPDATE user set email  WHERE email = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+    public function bdModificationPassword($login, $password)
+    {
+        $req = "UPDATE user set password = :password WHERE email = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(":password", $password, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
+    public function bdSuppressionCompte($login){
+            $req="DELETE FROM user WHERE email = :login";
+            $stmt = $this->getBdd()->prepare($req);
+            $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+            $stmt->execute();
+            $estModifier = ($stmt->rowCount() > 0);
+            $stmt->closeCursor();
+            return $estModifier;
+        }
 }

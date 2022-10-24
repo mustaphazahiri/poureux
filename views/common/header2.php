@@ -7,27 +7,27 @@
             <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="accueil">Accueil</a>
+                        <a class="nav-link text-white" aria-current="page" href="<?= URL; ?>accueil">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 text-white" href="lecollectif">Le Collectif</a>
+                        <a class="nav-link ms-3 text-white" href="<?= URL; ?>lecollectif">Le Collectif</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 text-white" href="nousrejoindre">Nous rejoindre</a>
+                        <a class="nav-link ms-3 text-white" href="<?= URL; ?>nousrejoindre">Nous rejoindre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 text-white" href="actualites">Actualités</a>
+                        <a class="nav-link ms-3 text-white" href="<?= URL; ?>actualites">Actualités</a>
                     </li>
                     <?php if (!empty($_SESSION['profil'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 text-white" href="paniersrepas">Paniers repas</a>
+                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>paniersrepas">Paniers repas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 text-white" href="livraisons">Livraisons</a>
+                            <a class="nav-link ms-3 text-white" href="<?= URL; ?>livraisons">Livraisons</a>
                         </li>
                     <?php endif; ?>
                     <li class="nav-item">
-                        <a class="nav-link ms-3 text-white" href="contact">Contact</a>
+                        <a class="nav-link ms-3 text-white" href="<?= URL; ?>contact">Contact</a>
                     </li>
                 </ul>
                 <div class="login__social">

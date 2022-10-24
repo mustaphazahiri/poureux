@@ -84,7 +84,7 @@ try {
             echo "test";
             break;
         case "validationMail":
-            echo "test";
+            $utilisateurController->validation_mailCompte($url[1], $url[2]);
             break;
 
         case "lecollectif":
@@ -129,6 +129,25 @@ try {
                     case "deconnexion":
                         $utilisateurController->deconnexion();
                         break;
+                    case "validation_modificationMail":
+                        $utilisateurController->validation_modificationMail(Securite::secureHTML($_POST['email']));
+                        break;
+                    case "modificationPassword":
+                        $utilisateurController->modificationPassword();
+                        break;
+                    case "validation_modificationPassword":
+                        if (!empty($_POST['ancienPassword']) && !empty($_POST['nouveauPassword']) && !empty($_POST['confirmNouveauPassword'])) {
+                            $ancienPassword = Securite::secureHTML($_POST['ancienPassword']);
+                            $nouveauPassword = Securite::secureHTML($_POST['nouveauPassword']);
+                            $confirmationNouveauPassword = Securite::secureHTML($_POST['confirmNouveauPassword']);
+                            $utilisateurController->validation_modificationPassword($ancienPassword, $nouveauPassword, $confirmationNouveauPassword);
+                        } else {
+                            Toolbox::ajouterMessageAlerte("Vous n'avez pas renseigné toutes les informations", Toolbox::COULEUR_ROUGE);
+                            header("Location: " . URL . "compte/modificationPassword");
+                        }
+                        break;
+                         case "suppressionCompte" : $utilisateurController->suppressionCompte();
+                                            break;
                     default:
                         throw new Exception("La page n'existe pas");
                 }

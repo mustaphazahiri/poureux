@@ -16,7 +16,7 @@
                     Pour cela, le mouvement continue et chaque semaine des dizaines
                     de repas, des produits d’hygiène, des aliments pour les animaux
                     sont chaleureusement préparés et distribués par nos bénévoles.</p>
-                <a class="nav-link ms-3" href="nousrejoindre"><button class="btn px-5 py-3 my-4 enSavoirPlus text-white rounded">Je m'inscris</button></a>
+                <a class="nav-link ms-3" href="inscription"><button class="btn px-5 py-3 my-4 enSavoirPlus text-white rounded">Je m'inscris</button></a>
             </div>
         </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -113,7 +113,7 @@
                         Pour cela, le mouvement continue et chaque semaine des dizaines
                         de repas, des produits d’hygiène, des aliments pour les animaux
                         sont chaleureusement préparés et distribués par nos bénévoles.</p>
-                    <a class="nav-link ms-3" href="nousrejoindre"><button class="btn px-5 py-3 my-4 enSavoirPlus text-white rounded">Je m'inscris</button></a>
+                    <a class="nav-link ms-3" href="inscription"><button class="btn px-5 py-3 my-4 enSavoirPlus text-white rounded">Je m'inscris</button></a>
                 </div>
             </div>
         </div>

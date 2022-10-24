@@ -40,6 +40,7 @@ class UtilisateurController extends MainController
             "page_description" => "Description de la page espace membre",
             "page_title" => "Se connecter à l'espace membre",
             "utilisateur" => $datas,
+            "page_javascript" => ['profil.js'],
             "view" => "views/utilisateur/profil.view.php",
             "template" => "views/common/template2.php"
         ];
@@ -84,6 +85,68 @@ class UtilisateurController extends MainController
         $this->sendMailValidation($utilisateur['login'], $utilisateur['clef']);
         header("Location: " . URL . "connexion");
     }
+    public function validation_mailCompte($login, $clef)
+    {
+        if ($this->utilisateurManager->bdValidationMailCompte($login, $clef)) {
+            Toolbox::ajouterMessageAlerte("le compte a été activé avec succès", Toolbox::COULEUR_VERTE);
+            header("Location: " . URL . 'connexion');
+        } else {
+            Toolbox::ajouterMessageAlerte("le compte n'a pas été activé !", Toolbox::COULEUR_ROUGE);
+            header("Location: " . URL . 'inscription');
+        }
+    }
+    public function validation_modificationMail($email)
+    {
+        if ($this->utilisateurManager->bdModificationMailUser($_SESSION['profil']['login'], $email)) {
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Aucune modification effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Location: " . URL . "compte/profil");
+    }
+    public function modificationPassword()
+    {
+        $data_page = [
+            "page_description" => "Page de modification du password",
+            "page_title" => "Page de modification du password",
+            "page_javascript" => ["modificationPassword.js"],
+            "view" => "views/Utilisateur/modificationPassword.view.php",
+            "template" => "views/common/template2.php"
+        ];
+        $this->genererPage($data_page);
+    }
+    public function validation_modificationPassword($ancienPassword, $nouveauPassword, $confirmationNouveauPassword)
+    {
+        if ($nouveauPassword === $confirmationNouveauPassword) {
+            if ($this->utilisateurManager->isCombinaisonValide($_SESSION['profil']['login'], $ancienPassword)) {
+                $passwordCrypte = password_hash($nouveauPassword, PASSWORD_DEFAULT);
+                if ($this->utilisateurManager->bdModificationPassword($_SESSION['profil']['login'], $passwordCrypte)) {
+                    Toolbox::ajouterMessageAlerte("La modification du password a été effectuée", Toolbox::COULEUR_VERTE);
+                    header("Location: " . URL . "compte/profil");
+                } else {
+                    Toolbox::ajouterMessageAlerte("La modification a échouée", Toolbox::COULEUR_ROUGE);
+                    header("Location: " . URL . "compte/modificationPassword");
+                }
+            } else {
+                Toolbox::ajouterMessageAlerte("La combinaison login / ancien password ne correspond pas", Toolbox::COULEUR_ROUGE);
+                header("Location: " . URL . "compte/modificationPassword");
+            }
+        } else {
+            Toolbox::ajouterMessageAlerte("Les passwords ne correspondent pas", Toolbox::COULEUR_ROUGE);
+            header("Location: " . URL . "compte/modificationPassword");
+        }
+    }
+    public function suppressionCompte()
+        {
+            if ($this->utilisateurManager->bdSuppressionCompte($_SESSION['profil']['login'])) {
+                Toolbox::ajouterMessageAlerte("La suppression du compte est effectuée", Toolbox::COULEUR_VERTE);
+                $this->deconnexion();
+            } else {
+                Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
+                header("Location: " . URL . "compte/profil");
+            }
+        }
+
     public function pageErreur($msg)
     {
         parent::pageErreur($msg);

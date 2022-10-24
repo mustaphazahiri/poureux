@@ -51,27 +51,27 @@
                 <div class="collapse navbar-collapse ms-5 menu" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link Couleur_FEAC43 hover-underline-animation" aria-current="page" href="accueil">Accueil</a>
+                            <a class="nav-link Couleur_FEAC43 hover-underline-animation" aria-current="page" href="<?= URL; ?>accueil">Accueil</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link ms-3 Couleur_FEAC43  hover-underline-animation" href="lecollectif">Le Collectif</a>
+                            <a class="nav-link ms-3 Couleur_FEAC43  hover-underline-animation" href="<?= URL; ?>lecollectif">Le Collectif</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ms-3  Couleur_FEAC43 hover-underline-animation" href="nousrejoindre">Nous rejoindre</a>
+                            <a class="nav-link ms-3  Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>nousrejoindre">Nous rejoindre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="actualites">Actualités</a>
+                            <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>actualites">Actualités</a>
                         </li>
                         <?php if (!empty($_SESSION['profil'])) : ?>
                             <li class="nav-item">
-                                <a class="nav-link ms-3  Couleur_FEAC43 hover-underline-animation" href="paniersrepas">Paniers repas</a>
+                                <a class="nav-link ms-3  Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>paniersrepas">Paniers repas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="livraisons">Livraisons</a>
+                                <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>livraisons">Livraisons</a>
                             </li>
                         <?php endif; ?>
                         <li class="nav-item">
-                            <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="contact">Contact</a>
+                            <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>contact">Contact</a>
                         </li>
                     </ul>
                     <div class="login__social">

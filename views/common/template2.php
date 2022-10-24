@@ -41,6 +41,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./public/JavaScript/app.js"></script>
     <script src="./public/JavaScript/script.js"></script>
+    <?php if (!empty($page_javascript)) : ?>
+        <?php foreach ($page_javascript as $fichier_javascript) : ?>
+            <script src="<?= URL ?>public/JavaScript/<?= $fichier_javascript ?>"></script>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </body>
 
 </html>
