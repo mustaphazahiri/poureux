@@ -1,7 +1,7 @@
 <header class="">
     <nav class="navbar fixed-top navHeader navbar-expand-lg navHeader2">
         <div class="container-fluid">
-            <a class="navbar-brand mx-5" href="accueil">
+            <a class="navbar-brand mx-5" href="<?= URL; ?>accueil">
                 <img src="<?= URL; ?>public/Assets/images/PourEuxNancySVG.svg" width="250" height="150" alt="logo du site" />
             </a>
             <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">

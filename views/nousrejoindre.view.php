@@ -12,7 +12,6 @@
                 <p class="card-text me-5">Le jour de la maraude, un livreur prendra contact avec toi 30 min avant l'heure souhaitée.</p>
                 <p class="card-text me-5"> Merci Pour Eux !!!</p>
                 <a class="nav-link" href="inscription"><button type="button" class="btn px-5 py-3 my-4 enSavoirPlus text-white rounded">Je m'inscris</button></a>
-
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 g-4">

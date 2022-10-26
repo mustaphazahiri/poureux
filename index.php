@@ -56,6 +56,7 @@ try {
                 $cp = Securite::secureHTML($_POST['cp']);
                 $ville = Securite::secureHTML($_POST['ville']);
                 $telephone = Securite::secureHTML($_POST['telephone']);
+                $facebook = Securite::secureHTML($_POST['facebook']);
                 // var_dump($_POST);
                 $client = new GuzzleHttp\Client(['base_uri' => API_URL]);
 
@@ -73,7 +74,7 @@ try {
                 } else {
                     $error = 'Le code postal et la commune ne correspondent pas.';
                 }
-                $utilisateurController->validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $clef);
+                $utilisateurController->validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef);
             } else {
                 Toolbox::ajouterMessageAlerte("Toutes les informations sont obligatoires pour pouvoir s'inscrire ", Toolbox::COULEUR_ROUGE);
                 header('Location: ' . URL . "inscription");
@@ -111,18 +112,21 @@ try {
         case 'cgu':
             $visiteurController->cgu();
             break;
+        case "accepte-cookie":
+            $visiteurController->acceptercookie();
+            break;
         case "compte":
             if (!Securite::isconnected()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter", Toolbox::COULEUR_ROUGE);
                 header('Location: ' . URL . "connexion");
             } else {
                 switch ($url[1]) {
-                        case "paniersrepas":
-                             $utilisateurController->cuisinier();
-                             break;
-                         case "livraisons":
-                             $utilisateurController->livreur();
-                             break;
+                    case "paniersrepas":
+                        $utilisateurController->cuisinier();
+                        break;
+                    case "livraisons":
+                        $utilisateurController->livreur();
+                        break;
                     case "profil":
                         $utilisateurController->profil();
                         break;
@@ -146,8 +150,9 @@ try {
                             header("Location: " . URL . "compte/modificationPassword");
                         }
                         break;
-                         case "suppressionCompte" : $utilisateurController->suppressionCompte();
-                                            break;
+                    case "suppressionCompte":
+                        $utilisateurController->suppressionCompte();
+                        break;
                     default:
                         throw new Exception("La page n'existe pas");
                 }

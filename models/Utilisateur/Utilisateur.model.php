@@ -42,10 +42,10 @@ class UtilisateurManager extends MainManager
         $stmt->closeCursor();
         return $resultat;
     }
-    public function bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $clef)
+    public function bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef)
     {
 
-        $req = "INSERT INTO user (nom_user, prenom_user, email, password, adresse, cp,ville, telephone,facebook,is_valid,clef) VALUES (:nom,:prenom,:login,:password, :adresse, :cp,:ville, :telephone, 0,0,:clef) ";
+        $req = "INSERT INTO user (nom_user, prenom_user, email, password, adresse, cp,ville, telephone,facebook,is_valid,clef) VALUES (:nom,:prenom,:login,:password, :adresse, :cp,:ville, :telephone, :facebook,0,:clef) ";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":nom", $nom_user, PDO::PARAM_STR);
         $stmt->bindValue(":prenom", $prenom_user, PDO::PARAM_STR);
@@ -55,6 +55,7 @@ class UtilisateurManager extends MainManager
         $stmt->bindValue(":cp", $cp, PDO::PARAM_INT);
         $stmt->bindValue(":ville", $ville, PDO::PARAM_STR);
         $stmt->bindValue(":telephone", $telephone, PDO::PARAM_STR);
+        $stmt->bindValue(":facebook", $facebook, PDO::PARAM_INT);
         $stmt->bindValue(":clef", $clef, PDO::PARAM_INT);
         $stmt->execute();
         $isModified = ($stmt->rowcount() > 0);
@@ -100,13 +101,14 @@ class UtilisateurManager extends MainManager
         $stmt->closeCursor();
         return $estModifier;
     }
-    public function bdSuppressionCompte($login){
-            $req="DELETE FROM user WHERE email = :login";
-            $stmt = $this->getBdd()->prepare($req);
-            $stmt->bindValue(":login",$login,PDO::PARAM_STR);
-            $stmt->execute();
-            $estModifier = ($stmt->rowCount() > 0);
-            $stmt->closeCursor();
-            return $estModifier;
-        }
+    public function bdSuppressionCompte($login)
+    {
+        $req = "DELETE FROM user WHERE email = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
+    }
 }

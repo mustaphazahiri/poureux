@@ -41,7 +41,7 @@
 
         <nav class="navbar fixed-top navbar-expand-lg navGradient ">
             <div class="container-fluid">
-                <a class="navbar-brand mx-5 logo" href="accueil">
+                <a class="navbar-brand mx-5 logo" href="<?= URL; ?>accueil">
                     <img src="<?= URL; ?>public/Assets/images/PourEuxNancySVG.svg" width="250" height="150" alt="logo du site" />
                 </a>
                 <!-- <div class="toggle">

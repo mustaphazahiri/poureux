@@ -108,7 +108,20 @@ class VisiteurController extends MainController
         ];
         $this->genererPage($data_page);
     }
-
+    public function acceptercookie()
+    {
+        if (isset($_GET['accepte-cookie'])) {
+            setcookie('accepte-cookie', 'true', time() + 365 * 24 * 3600);
+            // header('Location: ' . URL . "accueil");
+            $data_page = [
+                "page_description" => "Description de la page qui sommes nous",
+                "page_title" => "Qui sommes nous?",
+                "view" => "views/lecollectif.view.php",
+                "template" => "views/common/template2.php"
+            ];
+            $this->genererPage($data_page);
+        }
+    }
 
 
     public function pageErreur($msg)

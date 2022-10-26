@@ -46,34 +46,34 @@ class UtilisateurController extends MainController
         ];
         $this->genererPage($data_page);
     }
-     public function cuisinier()
-        {
-            $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-            $_SESSION['profil']["role"] = $datas['role'];
-            $data_page = [
-                "page_description" => "Description de la page espace Cuisinier",
-                "page_title" => "l'espace Cuisinier",
-                "utilisateur" => $datas,
-                "page_javascript" => ['profil.js'],
-                "view" => "views/utilisateur/profil.view.php",
-                "template" => "views/common/template2.php"
-            ];
-            $this->genererPage($data_page);
-        }
-        public function livreur()
-                {
-                    $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-                    $_SESSION['profil']["role"] = $datas['role'];
-                    $data_page = [
-                        "page_description" => "Description de la page espace Cuisinier",
-                        "page_title" => "l'espace Cuisinier",
-                        "utilisateur" => $datas,
-                        "page_javascript" => ['profil.js'],
-                        "view" => "views/utilisateur/profil.view.php",
-                        "template" => "views/common/template2.php"
-                    ];
-                    $this->genererPage($data_page);
-                }
+    public function cuisinier()
+    {
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+        $data_page = [
+            "page_description" => "Description de la page espace Cuisinier",
+            "page_title" => "l'espace Cuisinier",
+            "utilisateur" => $datas,
+            "page_javascript" => ['profil.js'],
+            "view" => "views/utilisateur/paniersrepas.view.php",
+            "template" => "views/common/template2.php"
+        ];
+        $this->genererPage($data_page);
+    }
+    public function livreur()
+    {
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+        $data_page = [
+            "page_description" => "Description de la page espace Livreur",
+            "page_title" => "l'espace Livreur",
+            "utilisateur" => $datas,
+            "page_javascript" => ['profil.js'],
+            "view" => "views/utilisateur/livraisons.view.php",
+            "template" => "views/common/template2.php"
+        ];
+        $this->genererPage($data_page);
+    }
 
     public function deconnexion()
     {
@@ -82,12 +82,12 @@ class UtilisateurController extends MainController
         header("Location: " . URL . "lecollectif");
         Toolbox::ajouterMessageAlerte("vous êtes maintenant déconnectés ", Toolbox::COULEUR_VERTE);
     }
-    public function validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $clef)
+    public function validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef)
     {
         if ($this->utilisateurManager->isLoginAvailable($login)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = rand(0, 9999);
-            if ($this->utilisateurManager->bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $clef)) {
+            if ($this->utilisateurManager->bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef)) {
                 $this->sendMailValidation($login, $clef);
                 Toolbox::ajouterMessageAlerte('Votre compte a été crée, un mail de validation vous sera envoyé', Toolbox::COULEUR_VERTE);
                 header("Location: " . URL . "connexion");
@@ -165,15 +165,15 @@ class UtilisateurController extends MainController
         }
     }
     public function suppressionCompte()
-        {
-            if ($this->utilisateurManager->bdSuppressionCompte($_SESSION['profil']['login'])) {
-                Toolbox::ajouterMessageAlerte("La suppression du compte est effectuée", Toolbox::COULEUR_VERTE);
-                $this->deconnexion();
-            } else {
-                Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
-                header("Location: " . URL . "compte/profil");
-            }
+    {
+        if ($this->utilisateurManager->bdSuppressionCompte($_SESSION['profil']['login'])) {
+            Toolbox::ajouterMessageAlerte("La suppression du compte est effectuée", Toolbox::COULEUR_VERTE);
+            $this->deconnexion();
+        } else {
+            Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
+            header("Location: " . URL . "compte/profil");
         }
+    }
 
     public function pageErreur($msg)
     {

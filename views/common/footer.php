@@ -1,5 +1,5 @@
-<div class="container position-sticky">
-    <footer class="pt-4 my-md-5 pt-md-5">
+<div class="container position-sticky mb-5">
+    <footer class="pt-4 my-md-5 pt-md-5 ">
 
         <div class="row">
             <div class="col-6 col-md">
@@ -17,7 +17,7 @@
                 </a>
 
             </div>
-            <div class="col-3 col-md">
+            <div class="col-3 col-md mb-5">
                 <a href="cgu" class="mx-5 cgu"><span>CGU</span></a>
                 <a href="mentions" class="cgu"><span>Mentions Légales</span></a>
 
@@ -36,4 +36,5 @@
             </div>
         </div>
     </footer>
+
 </div>

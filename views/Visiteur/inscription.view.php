@@ -9,12 +9,12 @@
                 <div class="form-group mx-1">
                     <select class="form-select my-4" aria-label="Default select example">
                         <option selected>Choisissez votre rôle</option>
-                        <option name="role" value="1">Cuisinier</option>
-                        <option name="role" value="2">Livreur</option>
+                        <option name="id_role" value="1">Cuisinier</option>
+                        <option name="id_role" value="2">Livreur</option>
                     </select>
                     <div class="row my-3">
                         <div class="col">
-                            <label for="inputPassword" class="text-white">Nom</label>
+                            <label for="inputName" class="text-white">Nom</label>
                             <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="nom_user">
                         </div>
                         <div class="col">
@@ -45,10 +45,22 @@
                     <label for="inputPassword" class="text-white">Mot de passe</label>
                     <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
                 </div>
-                <!-- <div class="form-group mt-4 mx-1">
-                    <label for="inputPassword" class="text-white">Confirmer mot de passe</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password_confirm">
-                </div> -->
+                <label for="facebook" class="text-white mt-4">Avez-vous un compte facebook ?</label>
+                <div class="form-check mt-2">
+
+                    <input class="form-check-input" type="radio" name="facebook" value="1" checked>
+                    <label class="form-check-label text-white" for="exampleRadios1">
+                        Oui
+                    </label>
+                </div>
+                <div class="form-check">
+
+                    <input class="form-check-input" type="radio" name="facebook" value="0">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Non
+                    </label>
+                </div>
+
                 <div class="form-group mt-4 mx-1">
                     <div class="d-grid gap-2 my-3">
                         <button class="btn text-white cestparti" type="submit">C'est parti</button>

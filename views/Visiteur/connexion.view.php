@@ -13,12 +13,15 @@
                     <label for="password" class="text-white">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
-                <div class="form-group mt-3 mx-1">
-                    <label class="form-check-label text-white"><input type="checkbox"> Rester connecté</label>
+                <div class="form-group mt-4 mx-1">
+                    <!-- <label class="form-check-label text-white"><input type="checkbox"> Rester connecté</label> -->
                     <div class="d-grid gap-2 my-2">
                         <button class="btn text-white cestparti" type="submit">C'est parti</button>
                     </div>
-                    <a href="#" class="text-white">Mot de passe oublié?</a>
+                    <div class="mt-4"><a href="#" class="text-white mt-3">Mot de passe oublié?</a></div>
+
+                    <div class="mt-4"><a href="<?= URL; ?>inscription" class="text-white">Pas encore inscrit ? Rejoignez-nous !</a></div>
+
                 </div>
             </form>
         </div>
