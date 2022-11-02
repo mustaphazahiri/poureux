@@ -27,6 +27,7 @@ abstract class MainController
         $data_page = [
             "page_description" => "Description de la page des cuistots",
             "page_title" => "Cuistot, Le Collectif PourEux à Nancy",
+            "page_css" => ["main.css"],
             "view" => "views/paniersrepas.view.php",
             "template" => "views/common/template2.php"
         ];
@@ -39,6 +40,7 @@ abstract class MainController
         $data_page = [
             "page_description" => "Description de la page des livreurs",
             "page_title" => "Livreur de repas, Le Collectif PourEux à Nancy",
+            "page_css" => ["main.css"],
             "view" => "views/livraisons.view.php",
             "template" => "views/common/template2.php"
         ];
@@ -53,6 +55,7 @@ abstract class MainController
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
             "msg" => $msg,
+            "page_css" => ["main.css"],
             "view" => "./views/erreur.view.php",
             "template" => "views/common/template2.php"
         ];

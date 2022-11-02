@@ -8,6 +8,7 @@ require_once("./controllers/Toolbox.class.php");
 require_once("./controllers/Visiteur/Visiteur.controller.php");
 require_once("./controllers/Securite.class.php");
 require_once("./controllers/Utilisateur/Utilisateur.controller.php");
+require_once("./controllers/Administrateur/Administrateur.controller.php");
 
 use GuzzleHttp\Client;
 
@@ -15,6 +16,7 @@ const API_URL = 'https://geo.api.gouv.fr/';
 
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
+$administrateurController = new AdministrateurController();
 
 try {
     if (empty($_GET['page'])) {
@@ -46,8 +48,7 @@ try {
             $visiteurController->inscription();
             break;
         case "validation_inscription":
-            // echo "test validation inscription";
-            if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['nom_user']) && !empty($_POST['prenom_user']) && !empty($_POST['adresse']) && !empty($_POST['cp']) && !empty($_POST['ville']) && !empty($_POST['telephone'])) {
+            if (!empty($_POST['id_role']) && !empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['nom_user']) && !empty($_POST['prenom_user']) && !empty($_POST['adresse']) && !empty($_POST['cp']) && !empty($_POST['ville']) && !empty($_POST['telephone'])) {
                 $login = Securite::secureHTML($_POST['login']);
                 $password = Securite::secureHTML($_POST['password']);
                 $nom_user = Securite::secureHTML($_POST['nom_user']);
@@ -57,7 +58,8 @@ try {
                 $ville = Securite::secureHTML($_POST['ville']);
                 $telephone = Securite::secureHTML($_POST['telephone']);
                 $facebook = Securite::secureHTML($_POST['facebook']);
-                // var_dump($_POST);
+                $id_role = Securite::secureHTML($_POST['id_role']);
+
                 $client = new GuzzleHttp\Client(['base_uri' => API_URL]);
 
                 $response = $client->request('GET', 'communes?codePostal=' . $cp . '&fields=nom&format=json');
@@ -74,19 +76,25 @@ try {
                 } else {
                     $error = 'Le code postal et la commune ne correspondent pas.';
                 }
-                $utilisateurController->validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef);
+                $utilisateurController->validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef, $id_role);
             } else {
                 Toolbox::ajouterMessageAlerte("Toutes les informations sont obligatoires pour pouvoir s'inscrire ", Toolbox::COULEUR_ROUGE);
                 header('Location: ' . URL . "inscription");
             }
             break;
-        case "renvoyerMailValidation":
-            $utilisateurController->renvoyerMailValidation($url[1]);
-            echo "test";
+        case "joinRoleUser":
+            $utilisateurController->joinRoleUser($id_role);
             break;
-        case "validationMail":
-            $utilisateurController->validation_mailCompte($url[1], $url[2]);
-            break;
+            // case "inscription2":
+            //     $visiteurController->inscription2();
+            //     break;
+            // case "renvoyerMailValidation":
+            //     $utilisateurController->renvoyerMailValidation($url[1]);
+            //     echo "test";
+            //     break;
+            // case "validationMail":
+            //     $utilisateurController->validation_mailCompte($url[1], $url[2]);
+            //     break;
 
         case "lecollectif":
             $visiteurController->lecollectif();
@@ -116,7 +124,7 @@ try {
             $visiteurController->acceptercookie();
             break;
         case "compte":
-            if (!Securite::isconnected()) {
+            if (!Securite::isConnected()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter", Toolbox::COULEUR_ROUGE);
                 header('Location: ' . URL . "connexion");
             } else {
@@ -152,6 +160,23 @@ try {
                         break;
                     case "suppressionCompte":
                         $utilisateurController->suppressionCompte();
+                        break;
+                    default:
+                        throw new Exception("La page n'existe pas");
+                }
+            }
+            break;
+        case "administration":
+            if (!Securite::isConnected()) {
+                Toolbox::ajouterMessageAlerte("Veuillez vous connecter", Toolbox::COULEUR_ROUGE);
+                header("Location: " . URL . "connexion");
+            } elseif (!Securite::estAdmin()) {
+                Toolbox::ajouterMessageAlerte("Vous n'avez pas le droit d'être ici", Toolbox::COULEUR_ROUGE);
+                header("Location: " . URL . "accueil");
+            } else {
+                switch ($url[1]) {
+                    case "droits":
+                        $administrateurController->droits();
                         break;
                     default:
                         throw new Exception("La page n'existe pas");

@@ -12,13 +12,13 @@ class Toolbox
             "type" => $type
         ];
     }
-    public static function sendMail($destinataire, $sujet, $message)
-    {
-        $headers = " From: zahiri1979@gmail.com";
-        if (mail($destinataire, $sujet, $message, $headers)) {
-            Toolbox::ajouterMessageAlerte("mail envoyé", Toolbox::COULEUR_VERTE);
-        } else {
-            Toolbox::ajouterMessageAlerte("echec de l'envoi de mail", Toolbox::COULEUR_ROUGE);
-        }
-    }
+    // public static function sendMail($destinataire, $sujet, $message)
+    // {
+    //     $headers = " From: zahiri1979@gmail.com";
+    //     if (mail($destinataire, $sujet, $message, $headers)) {
+    //         Toolbox::ajouterMessageAlerte("mail envoyé", Toolbox::COULEUR_VERTE);
+    //     } else {
+    //         Toolbox::ajouterMessageAlerte("echec de l'envoi de mail", Toolbox::COULEUR_ROUGE);
+    //     }
+    // }
 }

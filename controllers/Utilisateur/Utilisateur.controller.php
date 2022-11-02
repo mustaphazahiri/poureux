@@ -35,11 +35,12 @@ class UtilisateurController extends MainController
     public function profil()
     {
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
+        $_SESSION['profil']["id_role"] = $datas['id_role'];
         $data_page = [
             "page_description" => "Description de la page espace membre",
             "page_title" => "Se connecter à l'espace membre",
             "utilisateur" => $datas,
+            "page_css" => ["main.css"],
             "page_javascript" => ['profil.js'],
             "view" => "views/utilisateur/profil.view.php",
             "template" => "views/common/template2.php"
@@ -49,11 +50,12 @@ class UtilisateurController extends MainController
     public function cuisinier()
     {
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
+        $_SESSION['profil']["id_role"] = $datas['id_role'];
         $data_page = [
             "page_description" => "Description de la page espace Cuisinier",
             "page_title" => "l'espace Cuisinier",
             "utilisateur" => $datas,
+            "page_css" => ["main.css"],
             "page_javascript" => ['profil.js'],
             "view" => "views/utilisateur/paniersrepas.view.php",
             "template" => "views/common/template2.php"
@@ -63,11 +65,12 @@ class UtilisateurController extends MainController
     public function livreur()
     {
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
+        $_SESSION['profil']["id_role"] = $datas['id_role'];
         $data_page = [
             "page_description" => "Description de la page espace Livreur",
             "page_title" => "l'espace Livreur",
             "utilisateur" => $datas,
+            "page_css" => ["main.css"],
             "page_javascript" => ['profil.js'],
             "view" => "views/utilisateur/livraisons.view.php",
             "template" => "views/common/template2.php"
@@ -82,14 +85,14 @@ class UtilisateurController extends MainController
         header("Location: " . URL . "lecollectif");
         Toolbox::ajouterMessageAlerte("vous êtes maintenant déconnectés ", Toolbox::COULEUR_VERTE);
     }
-    public function validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef)
+    public function validation_inscription($login, $password, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef, $id_role)
     {
         if ($this->utilisateurManager->isLoginAvailable($login)) {
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = rand(0, 9999);
-            if ($this->utilisateurManager->bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef)) {
-                $this->sendMailValidation($login, $clef);
-                Toolbox::ajouterMessageAlerte('Votre compte a été crée, un mail de validation vous sera envoyé', Toolbox::COULEUR_VERTE);
+            if ($this->utilisateurManager->bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef, $id_role)) {
+                // $this->sendMailValidation($login, $clef);
+                Toolbox::ajouterMessageAlerte('Votre compte a été crée, un administrateur vous contactera prochainement', Toolbox::COULEUR_VERTE);
                 header("Location: " . URL . "connexion");
             } else {
                 Toolbox::ajouterMessageAlerte('Erreur lors de la création du compte', Toolbox::COULEUR_ROUGE);
@@ -100,29 +103,29 @@ class UtilisateurController extends MainController
             header("Location: " . URL . "inscription");
         }
     }
-    private function sendMailValidation($login, $clef)
-    {
-        $urlVerif = URL . "validationMail/" . $login . "/" . $clef;
-        $sujet = " creation du compte sur le site poureux.fr";
-        $message = " Afin de valider votre compte merci de cliquer sur le lien suivant " . $urlVerif;
-        Toolbox::sendMail($login, $sujet, $message);
-    }
-    public function renvoyerMailValidation($login)
-    {
-        $utilisateur = $this->utilisateurManager->getUserInformation($login);
-        $this->sendMailValidation($utilisateur['login'], $utilisateur['clef']);
-        header("Location: " . URL . "connexion");
-    }
-    public function validation_mailCompte($login, $clef)
-    {
-        if ($this->utilisateurManager->bdValidationMailCompte($login, $clef)) {
-            Toolbox::ajouterMessageAlerte("le compte a été activé avec succès", Toolbox::COULEUR_VERTE);
-            header("Location: " . URL . 'connexion');
-        } else {
-            Toolbox::ajouterMessageAlerte("le compte n'a pas été activé !", Toolbox::COULEUR_ROUGE);
-            header("Location: " . URL . 'inscription');
-        }
-    }
+    // private function sendMailValidation($login, $clef)
+    // {
+    //     $urlVerif = URL . "validationMail/" . $login . "/" . $clef;
+    //     $sujet = " creation du compte sur le site poureux.fr";
+    //     $message = " Afin de valider votre compte merci de cliquer sur le lien suivant " . $urlVerif;
+    //     Toolbox::sendMail($login, $sujet, $message);
+    // }
+    // public function renvoyerMailValidation($login)
+    // {
+    //     $utilisateur = $this->utilisateurManager->getUserInformation($login);
+    //     $this->sendMailValidation($utilisateur['login'], $utilisateur['clef']);
+    //     header("Location: " . URL . "connexion");
+    // }
+    // public function validation_mailCompte($login, $clef)
+    // {
+    //     if ($this->utilisateurManager->bdValidationMailCompte($login, $clef)) {
+    //         Toolbox::ajouterMessageAlerte("le compte a été activé avec succès", Toolbox::COULEUR_VERTE);
+    //         header("Location: " . URL . 'connexion');
+    //     } else {
+    //         Toolbox::ajouterMessageAlerte("le compte n'a pas été activé !", Toolbox::COULEUR_ROUGE);
+    //         header("Location: " . URL . 'inscription');
+    //     }
+    // }
     public function validation_modificationMail($email)
     {
         if ($this->utilisateurManager->bdModificationMailUser($_SESSION['profil']['login'], $email)) {
@@ -137,6 +140,7 @@ class UtilisateurController extends MainController
         $data_page = [
             "page_description" => "Page de modification du password",
             "page_title" => "Page de modification du password",
+            "page_css" => ["main.css"],
             "page_javascript" => ["modificationPassword.js"],
             "view" => "views/Utilisateur/modificationPassword.view.php",
             "template" => "views/common/template2.php"
@@ -173,6 +177,12 @@ class UtilisateurController extends MainController
             Toolbox::ajouterMessageAlerte("La suppression n'a pas été effectuée. Contactez l'administrateur", Toolbox::COULEUR_ROUGE);
             header("Location: " . URL . "compte/profil");
         }
+    }
+    public function joinRoleUser($id_role)
+    {
+        $this->utilisateurManager->joinRoleUser($id_role);
+        Toolbox::ajouterMessageAlerte('la table USER_ROLE a été mise à jour', Toolbox::COULEUR_VERTE);
+        header("Location: " . URL . "connexion");
     }
 
     public function pageErreur($msg)

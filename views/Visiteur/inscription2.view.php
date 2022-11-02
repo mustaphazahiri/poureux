@@ -4,7 +4,7 @@
 
         </div>
         <div class="col-6 mx-5 my-5">
-            <form class="my-4" method="POST" action="validation_inscription">
+            <form class="my-4" method="POST" action="joinRoleUser">
                 <h2 class="text-white my-4 mb-5 text-center">INSCRIPTION</h2>
                 <div class="form-group mx-1">
                     <select class="form-select my-4" name="id_role" aria-label="Default select example">

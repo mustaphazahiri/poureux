@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/274ac46116.js" crossorigin="anonymous"></script>
     <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" />
-
+    <?php if (!empty($page_css)) : ?>
+        <?php foreach ($page_css as $fichier_css) : ?>
+            <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" />
+        <?php endforeach; ?>
+    <?php endif; ?>
 </head>
 
 <body>
