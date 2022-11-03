@@ -62,10 +62,11 @@
                         <li class="nav-item">
                             <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>actualites">Actualités</a>
                         </li>
-                        <?php if (!empty($_SESSION['profil'])) : ?>
+                        <?php if (Securite::isConnected() && Securite::estCuisinier()) : ?>
                             <li class="nav-item">
                                 <a class="nav-link ms-3  Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>compte/paniersrepas">Paniers repas</a>
-                            </li>
+                            </li><?php endif; ?>
+                        <?php if (Securite::isConnected() && Securite::estLivreur()) : ?>
                             <li class="nav-item">
                                 <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>compte/livraisons">Livraisons</a>
                             </li>
@@ -73,6 +74,11 @@
                         <li class="nav-item">
                             <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>contact">Contact</a>
                         </li>
+                        <?php if (Securite::isConnected() && Securite::estAdmin()) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link ms-3 Couleur_FEAC43 hover-underline-animation" href="<?= URL; ?>administration/droits">Administration</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                     <div class="login__social">
                         <!-- lien pour se connecter -->

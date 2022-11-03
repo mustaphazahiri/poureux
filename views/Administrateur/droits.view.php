@@ -13,7 +13,7 @@
                 <td class="text-center"><?= $utilisateur['nom_user'] ?></td>
                 <td class="text-center"><?= $utilisateur['prenom_user'] ?></td>
                 <td class="text-center"><?= $utilisateur['id_role'] ?></td>
-                <td class="text-center"><?= (int)$utilisateur['is_valid'] === 0 ? "non validé" : "validé" ?></td>
+                <td class="text-center"><?= (int)$utilisateur['is_valid'] === 0 ? "Non" : "Oui" ?></td>
             </tr>
         <?php endforeach; ?>
     </thead>

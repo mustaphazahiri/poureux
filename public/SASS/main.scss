@@ -210,3 +210,179 @@ font-weight: 900;
   width: 100%;
   height: 40vh;
 }
+@font-face {
+  font-family: "kollektif";
+  src: url("./CSS/Kollektif.woff");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kollektif";
+}
+
+.Couleur_FEAC43 {
+  color: #FEAC43;
+}
+
+.Couleur_A8000C {
+  color: #A8000C;
+}
+
+.Couleur_006F89 {
+  color: #006F89;
+}
+
+header {
+  height: 35vh;
+}
+
+.navGradient {
+  background: black;
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  /* 1st property: from where the 100% starts */
+  /* 2nd property: the first color */
+  /* 3rd property: the second color */
+  /* to add some colors to the gradient, do the same thing of 2nd and 3rd properties, edit the color and the color-stop */
+}
+
+.navHeader2 {
+  background-color: #FEAC43;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #FEAC43;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FEAC43;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.cropped {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+.cropped img {
+  margin: -10px 0px 0px -180px;
+}
+
+.hrAbout {
+  margin: 0;
+  width: 120px;
+  height: 10px;
+  background-color: #FEAC43;
+  border-radius: 5px;
+}
+
+.photo__about {
+  width: fit-content;
+}
+
+.hrFooter {
+  width: 80px;
+  height: 10px;
+  background-color: #FEAC43;
+  border-radius: 5px;
+}
+
+.divconnexion {
+  background-color: #006F89;
+}
+
+.cgu {
+  font-size: x-large;
+  position: relative;
+  bottom: -250px;
+  text-decoration: none;
+  color: #006F89;
+}
+
+.login__social {
+  position: relative;
+  top: -35px;
+}
+
+.div__mosaic {
+  width: 100%;
+  height: auto;
+  background-color: #006F89;
+}
+
+.div__charte {
+  width: 100%;
+  height: auto;
+  background-color: #FEAC43;
+}
+
+.cestparti {
+  background-color: #FEAC43;
+}
+
+.titre__pour__eux {
+  font-size: 3rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.active {
+  background-color: #FEAC43 !important;
+}
+
+.header__accueil {
+  height: 100vh;
+}
+.header__accueil .carousel {
+  height: 70%;
+}
+.header__accueil .carousel .carousel-caption {
+  height: 75%;
+}
+
+.pourEux__h1 {
+  font-size: 80px;
+  font-weight: 900;
+}
+
+.enSavoirPlus, .enSavoirPlus:hover {
+  background-color: #A8000C;
+}
+
+.section__mosaic {
+  background-color: #006F89;
+  width: 100%;
+  height: 40vh;
+}
+#btnModifMail{
+  background-color: #006F89;
+}
+
+.ajouterepas{
+  background-color: #FEAC43;
+}
+#btnsupcompte{
+    background-color: #A8000C;
+}
+/*# sourceMappingURL=main.css.map */
