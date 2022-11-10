@@ -31,7 +31,7 @@
                         <label for="ville" class="text-white">Ville</label>
                         <!-- <input type="text" class="form-control mb-3" id="" placeholder="Nom de Votre Ville" name="ville"> -->
 
-                        <select class="form-control mb-3" name="ville" id="ville">
+                        <select class="form-select mb-3" name="ville" id="ville">
 
                         </select>
                     </div>
@@ -66,11 +66,14 @@
                         <button class="btn text-white cestparti" type="submit">C'est parti</button>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="col-3 mx-5 my-5">
-            <!-- <img src="./public/Assets/images/login-logo.svg" width="260" height="560" alt=""> -->
+                <label for="facebook" class="text-white mt-4">En cliquant sur le bouton "c'est parti" je m'engage à respecter la charte du collectif, consultable <a href="lecollectif#charte__collectif">ici</a> </label>
 
         </div>
+        </form>
     </div>
+    <div class="col-3 mx-5 my-5">
+        <!-- <img src="./public/Assets/images/login-logo.svg" width="260" height="560" alt=""> -->
+
+    </div>
+</div>
 </div>

@@ -18,9 +18,10 @@
                     <?php else : ?>
                         <form method="POST" action="<?= URL ?>administration/validation_modificationRole">
                             <input type="hidden" name="login" value="<?= $utilisateur['login'] ?>" />
-                            <select class="form-select" name="role" onchange="confirm('confirmez vous la modification ?') ? submit() : document.location.reload()">
-                                <option value="cuisinier" <?= $utilisateur['id_role'] === "cuisinier" ? "selected" : "" ?>>Cuisinier</option>
-                                <option value="livreur" <?= $utilisateur['id_role'] === "livreur" ? "selected" : "" ?>>Livreur</option>
+                            <? var_dump($POST) ?>
+                            <select class="form-select" name="id_role" onchange="confirm('confirmez vous la modification ?') ? submit() : document.location.reload()">
+                                <option value="1" <?= $utilisateur['id_role'] === "cuisinier" ? "selected" : "" ?>>Cuisinier</option>
+                                <option value="2" <?= $utilisateur['id_role'] === "livreur" ? "selected" : "" ?>>Livreur</option>
 
                             </select>
                         </form>
@@ -28,7 +29,7 @@
                 </td>
                 <td class="text-center">
                     <form method="POST" action="<?= URL ?>administration/validation_compte">
-                        <input type="hidden" name="login" value="<?= $utilisateur['login'] ?>" />
+                        <input type="hidden" name="email" value="<?= $utilisateur['login'] ?>" />
                         <select class="form-select" name="is_valid" onchange="confirm('confirmez vous la modification ?') ? submit() : document.location.reload()">
                             <option value="1" <?= $utilisateur['is_valid'] == "1" ? "selected" : "" ?>>Oui</option>
                             <option value="0" <?= $utilisateur['is_valid'] == "0" ? "selected" : "" ?>>Non</option>

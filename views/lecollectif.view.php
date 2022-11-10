@@ -88,7 +88,7 @@
         </div>
     </div>
 </div>
-<div class="div__charte p-3 my-5 rounded container">
+<div class="div__charte p-3 my-5 rounded container" id="charte__collectif">
     <div class="row row-cols-1 my-5 mx-5 row-cols-md-2 g-4">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

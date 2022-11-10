@@ -178,6 +178,12 @@ try {
                     case "droits":
                         $administrateurController->droits();
                         break;
+                    case "validation_modificationRole":
+                        $administrateurController->validation_modificationRole($_POST['login'], $_POST['id_role']);
+                        break;
+                    case "validation_compte":
+                        $administrateurController->validation_compte($_POST['login'], $_POST['is_valid']);
+                        break;
                     default:
                         throw new Exception("La page n'existe pas");
                 }

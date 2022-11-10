@@ -25,7 +25,26 @@ class AdministrateurController extends MainController
         ];
         $this->genererPage($data_page);
     }
-
+    public function validation_modificationRole($login, $id_role)
+    {
+        if ($this->administrateurManager->bdModificationRoleUser($login, $id_role)) {
+            Toolbox::ajouterMessageAlerte("La modification a été prise en compte", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("La modification n'a pas été prise en compte", Toolbox::COULEUR_ROUGE);
+            var_dump($_POST['login']);
+        }
+        header("Location: " . URL . "administration/droits");
+    }
+    public function validation_compte($email, $is_valid)
+    {
+        if ($this->administrateurManager->bdActivationCompte($email, $is_valid)) {
+            Toolbox::ajouterMessageAlerte("L'activation du compte a été prise en compte", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("L'activation du compte n'a pas été prise en compte", Toolbox::COULEUR_ROUGE);
+            var_dump($_POST);
+        }
+        // header("Location: " . URL . "administration/droits");
+    }
     public function pageErreur($msg)
     {
         parent::pageErreur($msg);
