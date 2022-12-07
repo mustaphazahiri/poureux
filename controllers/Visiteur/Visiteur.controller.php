@@ -134,7 +134,29 @@ class VisiteurController extends MainController
         }
     }
 
-
+    public function contactrecaptcha()
+    {
+        //on verifie que le methode post est utilisée
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['mail']) && !empty($_POST['mail']) && isset($_POST['message']) && !empty($_POST['message'])) {
+                // On nettoie le contenu
+                $nom = strip_tags($_POST['nom']);
+                $mail = strip_tags($_POST['nom']);
+                $message = strip_tags($_POST['nom']);
+                $data_page = [
+                    "page_description" => "Votre message a été transmis à l'équipe bénévole",
+                    "page_title" => "Transmission infos contact",
+                    "page_css" => ["main.css"],
+                    "view" => "views/lecollectif.view.php",
+                    "template" => "views/common/template2.php"
+                ];
+                $this->genererPage($data_page);
+            }
+        } else {
+            http_response_code(405);
+            echo 'Méthode non autorisée';
+        }
+    }
     public function pageErreur($msg)
     {
         parent::pageErreur($msg);

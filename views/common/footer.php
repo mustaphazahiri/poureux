@@ -10,7 +10,7 @@
                     <h5 class="my-4 mx-5">Contact</h5>
                 </a>
                 <a class="text-decoration-none text-dark" href="<?= URL; ?>connexion">
-                    <h5 class="my-4 mx-5">Deveir bénévole</h5>
+                    <h5 class="my-4 mx-5">Devenir bénévole</h5>
                 </a>
                 <a class="text-decoration-none text-dark" href="<?= URL; ?>contact">
                     <h5 class="my-4 mx-5">Notre charte</h5>

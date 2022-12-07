@@ -45,7 +45,7 @@ class UtilisateurManager extends MainManager
     public function bdCreerCompte($login, $passwordCrypte, $nom_user, $prenom_user, $adresse, $cp, $ville, $telephone, $facebook, $clef, $id_role)
     {
 
-        $req = "INSERT INTO user (nom_user, prenom_user, email, password, adresse, cp,ville, telephone,facebook,is_valid,clef,id_role) VALUES (:nom,:prenom,:login,:password, :adresse, :cp,:ville, :telephone, :facebook,0,:clef,:id_role) ";
+        $req = "INSERT INTO user (nom_user, prenom_user, email, password, adresse, cp,ville, telephone,facebook,is_valid,clef) VALUES (:nom,:prenom,:login,:password, :adresse, :cp,:ville, :telephone, :facebook,0,:clef) ";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":nom", $nom_user, PDO::PARAM_STR);
         $stmt->bindValue(":prenom", $prenom_user, PDO::PARAM_STR);
@@ -57,17 +57,21 @@ class UtilisateurManager extends MainManager
         $stmt->bindValue(":telephone", $telephone, PDO::PARAM_STR);
         $stmt->bindValue(":facebook", $facebook, PDO::PARAM_INT);
         $stmt->bindValue(":clef", $clef, PDO::PARAM_INT);
-        $stmt->bindValue(":id_role", $id_role, PDO::PARAM_INT);
         $stmt->execute();
         $isModified = ($stmt->rowcount() > 0);
         $stmt->closeCursor();
+        $req = "SELECT LAST_INSERT_ID() as id_user from user";
+        $stmt = $this->getBdd()->query($req);
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->joinRoleUser($id_role, $resultat['id_user']);
         return $isModified;
     }
-    public function joinRoleUser($id_role)
+    public function joinRoleUser($id_role, $id_user)
     {
-        $req = "INSERT INTO `user_role`(`id_role`, `id_user`) VALUES (:id_role,)";
+        $req = "INSERT INTO `user_role`(`id_role`, `id_user`) VALUES (:id_role,:id_user)";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":id_role", $id_role, PDO::PARAM_INT);
+        $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
         $stmt->execute();
         $isModified = ($stmt->rowcount() > 0);
         $stmt->closeCursor();
