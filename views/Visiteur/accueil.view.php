@@ -43,7 +43,7 @@
     </div>
   </div>
 </div> -->
-<div class="div__mosaic p-3 my-4 rounded container">
+<!-- <div class="div__mosaic p-3 my-4 rounded container">
   <div class="row my-5 mx-5">
     <div class="row row-cols-1 row-cols-md-3">
       <div class="col">
@@ -122,4 +122,16 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="container">
+  <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
+  <div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
+  <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
+  <div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
+  <div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
+  <div class="p-3 mb-2 bg-info text-dark">.bg-info</div>
+  <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
+  <div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
+  <div class="p-3 mb-2 bg-body text-dark">.bg-body</div>
+  <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 </div>

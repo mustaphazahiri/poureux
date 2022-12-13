@@ -9,17 +9,17 @@
                 <a class="text-decoration-none text-dark" href="<?= URL; ?>contact">
                     <h5 class="my-4 mx-5">Contact</h5>
                 </a>
-                <a class="text-decoration-none text-dark" href="<?= URL; ?>connexion">
+                <a class="text-decoration-none text-dark" href="<?= URL; ?>inscription">
                     <h5 class="my-4 mx-5">Devenir bénévole</h5>
                 </a>
-                <a class="text-decoration-none text-dark" href="<?= URL; ?>contact">
+                <a class="text-decoration-none text-dark" href="<?= URL; ?>lecollectif#charte__collectif">
                     <h5 class="my-4 mx-5">Notre charte</h5>
                 </a>
 
             </div>
             <div class="col-3 col-md mb-5">
-                <a href="cgu" class="mx-5 cgu"><span>CGU</span></a>
-                <a href="mentions" class="cgu"><span>Mentions Légales</span></a>
+                <a href="<?= URL; ?>cgu" class="mx-5 cgu"><span>CGU</span></a>
+                <a href="<?= URL; ?>mentions" class="cgu"><span>Mentions Légales</span></a>
 
             </div>
             <div class="col-6 col-md">
