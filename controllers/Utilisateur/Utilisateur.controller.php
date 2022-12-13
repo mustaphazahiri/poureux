@@ -182,17 +182,17 @@ class UtilisateurController extends MainController
             header("Location: " . URL . "compte/profil");
         }
     }
-    public function joinRoleUser($id_role)
-    {
-        $this->utilisateurManager->joinRoleUser($id_role);
-        Toolbox::ajouterMessageAlerte('la table USER_ROLE a été mise à jour', Toolbox::COULEUR_VERTE);
-        header("Location: " . URL . "connexion");
-    }
+    // public function joinRoleUser($id_role)
+    // {
+    //     $this->utilisateurManager->joinRoleUser($id_role);
+    //     Toolbox::ajouterMessageAlerte('la table USER_ROLE a été mise à jour', Toolbox::COULEUR_VERTE);
+    //     header("Location: " . URL . "connexion");
+    // }
 
-    public function pageErreur($msg)
-    {
-        parent::pageErreur($msg);
-    }
+    // public function pageErreur($msg)
+    // {
+    //     parent::pageErreur($msg);
+    // }
 }
 
 // public function inscription(){
