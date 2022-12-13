@@ -66,6 +66,7 @@
                         <button class="btn text-white cestparti" type="submit">C'est parti</button>
                     </div>
                 </div>
+                <label for="rgpd" class="text-white mt-4">En cliquant sur le bouton "c'est parti" je donne mon consentement pour collecter données personnelles, selon les mentions légales consultables <a href="mentions">ici</a> </label>
                 <label for="facebook" class="text-white mt-4">En cliquant sur le bouton "c'est parti" je m'engage à respecter la charte du collectif, consultable <a href="lecollectif#charte__collectif">ici</a> </label>
 
         </div>
